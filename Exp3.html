@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City of the Future - Interactive Map</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            scroll-behavior: smooth; /* Enables smooth scrolling */
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        h2 {
+            color: #3498db;
+        }
+        .info-section {
+            margin: 50px auto;
+            padding: 20px;
+            width: 80%;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <h1> City of the Future - Interactive Image Map</h1>
+    <p>Click on different parts of the image to explore future innovations.</p>
+
+    <!-- Image Map -->
+    <img src="img2.jpeg" usemap="#futuremap" width="800" alt="Future City Map">
+
+    <!-- Defining Image Map -->
+    <map name="futuremap">
+        <!-- AI & Automation -->
+        <area shape="rect" coords="100,50,250,200" href="#ai" alt="AI & Automation">
+        <!-- Smart Cities -->
+        <area shape="circle" coords="500,150,50" href="#smartcities" alt="Smart Cities">
+        <!-- Renewable Energy -->
+        <area shape="poly" coords="300,250,400,300,500,250,450,200" href="#energy" alt="Renewable Energy">
+        <!-- Hyperloop & Future Transport -->
+        <area shape="rect" coords="600,100,750,250" href="#transport" alt="Hyperloop & Future Transport">
+    </map>
+
+    <hr>
+
+    <!-- Information Sections -->
+    <div id="ai" class="info-section">
+        <h2> AI & Automation</h2>
+        <p>Artificial Intelligence is revolutionizing industries with self-learning algorithms, robotics, and automation. From smart assistants to industrial automation, AI is shaping the cities of tomorrow.</p>
+    </div>
+
+    <div id="smartcities" class="info-section">
+        <h2> Smart Cities</h2>
+        <p>Urban areas are becoming more intelligent with IoT sensors, real-time data analytics, and automated infrastructure. Smart cities optimize traffic, reduce energy consumption, and improve public services.</p>
+    </div>
+
+    <div id="energy" class="info-section">
+        <h2> Renewable Energy</h2>
+        <p>Solar farms, wind energy, and green technology are replacing fossil fuels. Future cities will be powered by clean, sustainable energy sources, reducing environmental impact.</p>
+    </div>
+
+    <div id="transport" class="info-section">
+        <h2> Hyperloop & Future Transport</h2>
+        <p>With hyperloop trains, autonomous vehicles, and drone deliveries, the future of transport is faster, safer, and more efficient. AI-powered logistics are shaping a new era of mobility.</p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete CSS Showcase</title>
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Internal CSS -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(120deg, #84fab0, #8fd3f4);
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        h1 {
+            color: white;
+            text-shadow: 2px 2px 4px black;
+            padding: 20px;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .box {
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease-in-out, background 0.3s ease;
+        }
+        .box:hover {
+            transform: scale(1.1);
+            background: #ffcccb;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background: #ff7eb3;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #ff4d6d;
+        }
+        .animation {
+            width: 100px;
+            height: 100px;
+            background: red;
+            margin: 20px auto;
+            border-radius: 50%;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Inline CSS -->
+    <h1 style="color: yellow; text-decoration: underline;">CSS Functionalities Showcase</h1>
+    
+    <div class="container">
+        <div class="box" style="border: 3px solid red;">Hover for Effects</div>
+        <div class="box">Flexbox & Grid Layout</div>
+        <div class="box">CSS Transitions</div>
+        <div class="box">Animations</div>
+    </div>
+
+    <div class="animation"></div>
+    
+    <button onclick="changeTheme()">Click for JavaScript Effect</button>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <i class="fas fa-star" style="font-size: 2em; color: gold; margin-top: 20px;"></i>
+
+    <script>
+        function changeTheme() {
+            document.body.style.background = 'linear-gradient(120deg, #ff9a9e, #fad0c4)';
+        }
+    </script>
+</body>
+</html>

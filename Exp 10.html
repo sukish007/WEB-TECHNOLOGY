@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Advanced jQuery Selectors Demo</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            padding: 40px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h2, h3 {
+            color: #343a40;
+            margin-bottom: 20px;
+        }
+        p, div {
+            font-size: 17px;
+            margin-bottom: 10px;
+        }
+        .note {
+            color: #6c757d;
+            font-style: italic;
+        }
+        .highlight {
+            background-color: yellow;
+            font-weight: bold;
+        }
+        .custom {
+            color: darkgreen;
+            font-weight: bold;
+        }
+        .special {
+            color: red;
+            font-weight: bold;
+        }
+        button {
+            padding: 10px 15px;
+            margin: 10px 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Advanced jQuery Selector Demonstration</h2>
+
+    <p>This is the first paragraph.</p>
+    <p class="note">This is a note paragraph.</p>
+    <div>This is a general div.</div>
+    <div data-custom="true">This div has a custom data attribute.</div>
+    <h3 class="note">This is a heading with class "note".</h3>
+    <div class="note">This is another note div.</div>
+
+    <button id="highlightParagraphs">Highlight Paragraphs</button>
+    <button id="highlightNotes">Highlight Notes</button>
+    <button id="highlightCustom">Highlight Data Attribute</button>
+    <button id="highlightNth">Highlight Every 2nd Paragraph</button>
+    <button id="highlightNotNote">Highlight Non-Note Paragraphs</button>
+    <button id="highlightChild">Highlight First Child Div</button>
+</div>
+
+<script>
+    $(document).ready(function(){
+        // Element selector
+        $("#highlightParagraphs").click(function(){
+            $("p").toggleClass("highlight");
+        });
+
+        // Class selector
+        $("#highlightNotes").click(function(){
+            $(".note").toggleClass("highlight");
+        });
+
+        // Attribute selector
+        $("#highlightCustom").click(function(){
+            $("[data-custom]").toggleClass("custom");
+        });
+
+        // nth-child selector
+        $("#highlightNth").click(function(){
+            $("p:nth-child(2)").toggleClass("special");
+        });
+
+        // not selector
+        $("#highlightNotNote").click(function(){
+            $("p:not(.note)").toggleClass("highlight");
+        });
+
+        // child selector
+        $("#highlightChild").click(function(){
+            $("div:first-child").toggleClass("special");
+        });
+    });
+</script>
+
+</body>
+</html>

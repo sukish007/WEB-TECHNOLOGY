@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Perfect Webpage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f4f6f8;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .navbar {
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .item-card {
+      border: 1px solid #dee2e6;
+      border-radius: 10px;
+      padding: 20px;
+      background: white;
+      margin-bottom: 20px;
+      transition: 0.3s;
+    }
+    .item-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .pagination {
+      justify-content: center;
+    }
+    footer {
+      background: #343a40;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">MySite</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-toggle="dropdown">
+          Services
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Design</a>
+          <a class="dropdown-item" href="#">Development</a>
+          <a class="dropdown-item" href="#">SEO</a>
+        </div>
+      </li>
+      <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mt-5">
+  <h3 class="mb-4 text-center">Our Portfolio (Paginated Items)</h3>
+  <div id="item-list" class="row">
+    <!-- JavaScript will render items here -->
+  </div>
+
+  <!-- Pagination -->
+  <nav>
+    <ul class="pagination" id="pagination">
+      <!-- JavaScript will render pagination here -->
+    </ul>
+  </nav>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p>© 2025 MySite. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- Bootstrap JS + jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Pagination Script -->
+<script>
+  const items = Array.from({ length: 24 }, (_, i) => `Item ${i + 1}`);
+  const itemsPerPage = 6;
+  let currentPage = 1;
+
+  function renderItems() {
+    const start = (currentPage - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const currentItems = items.slice(start, end);
+    const itemList = document.getElementById('item-list');
+    itemList.innerHTML = '';
+
+    currentItems.forEach(item => {
+      const col = document.createElement('div');
+      col.className = 'col-md-4';
+      col.innerHTML = `
+        <div class="item-card">
+          <h5>${item}</h5>
+          <p>This is a short description for ${item}. Explore more about our awesome work.</p>
+        </div>`;
+      itemList.appendChild(col);
+    });
+  }
+
+  function renderPagination() {
+    const totalPages = Math.ceil(items.length / itemsPerPage);
+    const pagination = document.getElementById('pagination');
+    pagination.innerHTML = '';
+
+    // Previous Button
+    pagination.innerHTML += `
+      <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+        <a class="page-link" href="#" onclick="changePage(${currentPage - 1})">Previous</a>
+      </li>`;
+
+    // Page Numbers
+    for (let i = 1; i <= totalPages; i++) {
+      pagination.innerHTML += `
+        <li class="page-item ${i === currentPage ? 'active' : ''}">
+          <a class="page-link" href="#" onclick="changePage(${i})">${i}</a>
+        </li>`;
+    }
+
+    // Next Button
+    pagination.innerHTML += `
+      <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+        <a class="page-link" href="#" onclick="changePage(${currentPage + 1})">Next</a>
+      </li>`;
+  }
+
+  function changePage(page) {
+    const totalPages = Math.ceil(items.length / itemsPerPage);
+    if (page >= 1 && page <= totalPages) {
+      currentPage = page;
+      renderItems();
+      renderPagination();
+    }
+  }
+
+  // Initial Load
+  renderItems();
+  renderPagination();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Factorial Calculator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            text-align: center;
+            width: 350px;
+        }
+        h2 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        input[type="number"] {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Factorial Calculator</h2>
+        <form method="post" action="">
+            <input type="number" name="num" placeholder="Enter a number" required>
+            <br>
+            <input type="submit" value="Calculate">
+        </form>
+
+        <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $num = $_POST["num"];
+            if (!is_numeric($num)) {
+                echo "<div class='error'>Please enter a valid number.</div>";
+            } elseif ($num < 0) {
+                echo "<div class='error'>Factorial is not defined for negative numbers.</div>";
+            } else {
+                $factorial = 1;
+                for ($i = 1; $i <= $num; $i++) {
+                    $factorial *= $i;
+                }
+                echo "<div class='result'>Factorial of $num is $factorial</div>";
+            }
+        }
+        ?>
+    </div>
+</body>
+</html>
